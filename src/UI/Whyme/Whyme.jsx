@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import './Whyme.css';
 
 export default function RoomEffect() {
   const containerRef = useRef(null);

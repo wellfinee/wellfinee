@@ -1,0 +1,81 @@
+.about {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  /* чтобы «Кто это» скрывался, когда уезжает вправо */
+  box-sizing: border-box;
+  padding: 0 10vw 0 30vw;
+  /* ваш отступ слева/справа для текста */
+  display: flex;
+  justify-content: center;
+  font-size: 1.7vw;
+  text-align: right;
+  z-index: -1;
+  /* базовый размер для <span className="about__text"> */
+  /* добавим слегка заметный фон, чтобы видно было, что секция на месте */
+}
+
+.about__svg-path {
+  fill: none;
+  /* Нет заливки */
+  stroke: black;
+  /* Цвет обводки */
+  stroke-width: 2;
+  /* Толщина линии */
+  vector-effect: non-scaling-stroke;
+  /* Если нужно, чтобы путь занимал всю ширину SVG-контейнера: */
+  width: 100%;
+  height: 100%;
+  display: block;
+  /* Убирает возможные «пробелы» вокруг */
+}
+
+.about__logo {
+  position: absolute;
+  top: 0%;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 6vw;
+  /* размер заголовков «Кто это» и «WELLFINEE» */
+}
+
+.about__ktoya {
+  font-weight: 700;
+  color: #333;
+  z-index: 1;
+  /* ниже, чем «WELLFINEE» */
+}
+
+.about__image {
+  position: absolute;
+  width: 30vw;
+  left: 0
+}
+
+.about__wellfine {
+
+  font-weight: 800;
+  color: #000;
+  white-space: nowrap;
+  z-index: 2;
+  /* выше, т.к. «WELLFINEE» должен быть сверху */
+  background-color: #f2f2f2;
+}
+
+.about__text {
+  margin-top: 0vh;
+  width: 60%;
+  line-height: 1.4;
+  color: #000000;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* будет проявляться через GSAP */
+}
