@@ -32,6 +32,65 @@ body {
   image-rendering: pixelated;
 }
 
+.face {
+  height: 60vh;
+  width: 80vw;
+  position: absolute;
+  display: block;
+  margin: 37vh 10vw 0 10vw;
+  z-index: -1;
+  transition: 1s ease;
+  animation: draw 1s ease-out 2s forwards, pulse 3s ease-in-out 4s infinite;
+}
+
+#layer1 {
+  stroke: rgb(0, 0, 0);
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  max-width: 60%;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-2vh);
+  }
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: var(--path-length);
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes erase {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: 11156.7626953125px;
+  }
+}
+
+.path--draw {
+  animation: draw 1s ease-out forwards !important;
+}
+
+.path--erase {
+  animation: erase 1s ease-in forwards !important;
+}
+
 .firstscreen {
   width: 100vw;
   height: 100vh;
