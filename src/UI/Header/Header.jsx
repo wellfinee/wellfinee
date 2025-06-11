@@ -1,5 +1,6 @@
 import { gsap } from "gsap";
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useRef, useEffect } from "react";
+import './Header.css';
 function Header() {
     const refHeader = useRef(null);
     const refMenu = useRef(null);

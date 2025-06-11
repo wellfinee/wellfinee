@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence, useAnimation } from 'framer-motion';
+import { motion as Motion, AnimatePresence, useAnimation } from 'framer-motion';
+import './Preloader.css';
 
 // Слоганы для циклической смены
 const slogans = [
@@ -51,18 +52,18 @@ const [current, setCurrent] = useState(0);
 
 // Разбивка слова на буквы для деконструкции
 const renderLetters = word => word.split('').map((char, i) => (
-    <motion.span
+      <Motion.span
         key={char + i}
         initial={{ y: 150, scale: 4, opacity: 0, skewX: 50 }}
         animate={{ y: 0, scale: 1, opacity: 1, skewX: 0 }}
         transition={{ delay: i * 0.3, duration: 0.6, ease: 'easeInOut' }}
         className="inline-block"
-    >{char}</motion.span>
+    >{char}</Motion.span>
 ));
 
 return (
     <AnimatePresence>
-        <motion.div
+        <Motion.div
             className="preloader"
             initial={{ opacity: 1 }}
             animate={controls}
@@ -78,12 +79,12 @@ return (
                 </h1>
             </div>
             {/* Слоган */}
-            <motion.h3
+            <Motion.h3
                 className="preloader__desc"
                 initial={{ x: 0, opacity: 0 }}
                 animate={{ x: 0, opacity: 1, transition: { duration: 0.6, ease: 'easeInOut', delay: 0.5 } }}
-            >{slogans[current]}</motion.h3>
-        </motion.div>
+            >{slogans[current]}</Motion.h3>
+        </Motion.div>
     </AnimatePresence>
 );
 };

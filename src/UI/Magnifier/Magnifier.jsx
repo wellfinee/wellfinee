@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react';
+import './Magnifier.css';
 export default function Magnifier({ targetRef, zoom = 2, size = 150 }) {
   const magnifierRef = useRef(null);
 

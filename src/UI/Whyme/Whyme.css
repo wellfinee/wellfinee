@@ -1,0 +1,99 @@
+
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  /* убрали overflow: hidden, чтобы выезжающие окна не обрезались */
+  overflow: visible;
+}
+
+/* когда активны левые — скрываем шов правой стены */
+.container.active-left .panel__right {
+  border-left-color: transparent;
+}
+
+/* когда активны правые — скрываем шов левой стены */
+.container.active-right .panel__left {
+  border-right-color: transparent;
+}
+
+.panel {
+  position: absolute;
+  /* у вас уже есть */
+  z-index: 0;
+  /* базовое состояние */
+}
+
+.panel.active {
+  z-index: 1;
+  /* активная стена на передний план */
+}
+
+/* стены */
+.panel {
+  position: absolute;
+  display: flex;
+  transition: opacity 0.6s;
+  flex-direction: column;
+  justify-content: space-between;
+  bottom: 0;
+  width: 50vw;
+  height: 100vh;
+}
+
+.panel__left {
+  left: 0;
+  padding-top: 25vh;
+  padding-bottom: 5vh;
+  transform-origin: right bottom;
+  transform: skewY(-15deg);
+  box-sizing: border-box;
+  border-right:2vw dashed black;
+  /* шов левой стены */
+  border-bottom: 2vw dashed black;
+}
+
+.panel__right {
+  right: 0;
+  padding-bottom: 25vh;
+  padding-top: 5vh;
+  box-sizing: border-box;
+  transform-origin: left bottom;
+  transform: skewY(15deg);
+  border-left: 2vw dashed black;
+  /* шов правой стены */
+  border-bottom: 2vw dashed black;
+}
+
+/* окна */
+.panel__window {
+  width: 60%;
+  height: 25vh;
+  margin: 0 auto;
+  padding: 2.5vh 4%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: opacity 0.4s ease;
+  justify-content: space-evenly;
+}
+.panel__window > h1{
+  font-size: max(60px, 3.5vw);
+}
+
+.panel__window > p{
+  font-size: max(30px, 1.5vw);
+}
+
+
+@keyframes lines {
+  from {
+    transform: translateY(0%);
+  }
+
+  to {
+    transform: translateY(50%);
+  }
+}

@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&family=Tektur:wght@400..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Tektur", sans-serif;
+}
+
+body {
+  background-color: #f2f2f2;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.hidden {
+  overflow: hidden;
+}
+
+.noise-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  opacity: 0.2;
+  pointer-events: none;
+  filter: blur(2px);
+  image-rendering: pixelated;
+}
+
+.firstscreen {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.firstscreen__job {
+  position: absolute;
+  bottom: 4%;
+  left: 8%;
+  font-size: max(30px, 2vw);
+  transition: left 1s ease;
+}
+
+.firstscreen__dialog {
+  position: absolute;
+  bottom: 4%;
+  right: 8%;
+  text-align: right;
+  font-size: max(20px, 1vw);
+  font-weight: 200;
+  transition: right 1s ease;
+}
+
+.firstscreen__dialog:hover {
+  font-weight: 700;
+  font-size: max(40px, 2vw);
+  font-family: "Handjet", sans-serif;
+}
+
+.firstscreen__dialog--close {
+  right: -30%;
+  position: absolute;
+}
+
+.firstscreen__job--close {
+  left: -30%;
+  position: absolute;
+}
+
+.firstscreen::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 92vw;
+  left: 2vw;
+  top: -200vh;
+  border-left: 2vw dashed black;
+  border-right: 2vw dashed black;
+  height: 300vh;
+  transform: translateY(-100%);
+  animation: lines 10s linear 2s infinite;
+}
+
+@keyframes lines {
+  from { transform: translateY(0%); }
+  to { transform: translateY(50%); }
+}
+
+@media screen and (max-width: 1600px) {
+  .firstscreen__job { font-size: max(25px, 1.5vw); }
+  .firstscreen__dialog { font-size: max(20px, 1vw); }
+  .face { height: 50vh; }
+}
+
+@media screen and (max-width: 700px) {
+  .firstscreen {
+    display: flex;
+    justify-content: end;
+    height: 90vh;
+    margin-bottom: 1vh;
+    gap: 4vh;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .firstscreen__dialog { text-align: center; position: static; }
+  .firstscreen__job { position: static; }
+  .firstscreen__dialog--close { right: 100vw; width: 100%; position: absolute; }
+  .firstscreen__job--close { left: 100vw; width: 100%; bottom: 12%; position: absolute; }
+}
+
+@media screen and (max-width: 500px) {
+  .face {
+    height: 80vh;
+    width: 140vw;
+    left: -30vw;
+    top: 5vh;
+  }
+}

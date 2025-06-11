@@ -2,9 +2,9 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { CSSRulePlugin } from "gsap/CSSRulePlugin";
-import Magnifier from "../UI/magnifier";
-import AnimationSectionGSAP from "../UI/about";
-import RoomEffect from "../UI/whyme";
+import Magnifier from "../UI/Magnifier/Magnifier";
+import AnimationSectionGSAP from "../UI/About/About";
+import RoomEffect from "../UI/Whyme/Whyme";
 
 function MainPage() {
   const pathRef = useRef(null);
