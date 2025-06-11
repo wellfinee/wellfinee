@@ -8,26 +8,26 @@ import "./App.css"
 function startNoise() {
   const canvas = document.getElementById('noiseCanvas');
   const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
 
-  const imageData = ctx.createImageData(canvas.width, canvas.height);
+  const SIZE = 200; // render small canvas and scale via CSS
+  canvas.width = SIZE;
+  canvas.height = SIZE;
+  canvas.style.width = '100%';
+  canvas.style.height = '100%';
+
+  const imageData = ctx.createImageData(SIZE, SIZE);
   const buffer32 = new Uint32Array(imageData.data.buffer);
 
   function noiseFrame() {
+    crypto.getRandomValues(buffer32);
     for (let i = 0; i < buffer32.length; i++) {
-      const gray = Math.random() * 255 | 0;
-      buffer32[i] = (255 << 24) | (gray << 16) | (gray << 8) | gray;
+      buffer32[i] |= 0xff000000; // set alpha channel
     }
     ctx.putImageData(imageData, 0, 0);
+    requestAnimationFrame(noiseFrame);
   }
 
-  function loop() {
-    noiseFrame();
-    requestAnimationFrame(loop);
-  }
-
-  loop();
+  noiseFrame();
 }
 function App() {
   useEffect(() => {
